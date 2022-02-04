@@ -168,9 +168,13 @@ for i,v in pairs(originalrig:GetDescendants()) do
 			v.Velocity = Vector3.new(_G.Velocity, _G.Velocity, _G.Velocity)
 			if _G.Netless2 then
 				local a = Instance.new("BodyVelocity",v)
-				a.MaxForce = Vector3.new(math.huge,math.huge,math.huge); a.P = math.huge; a.Velocity = Vector3.new(0,0,0)
+				a.MaxForce = Vector3.new(99999,99999,99999)
+				a.P = 9e9
+				a.D = 9e9
+				a.Velocity = Vector3.new(0,0,0)
 				local a = Instance.new("BodyAngularVelocity",v)
-				a.MaxTorque = Vector3.new(math.huge,math.huge,math.huge); a.P = math.huge; a.AngularVelocity = Vector3.new(0,0,0)
+				a.MaxTorque = Vector3.new(9e9,9e9,9e9)
+				a.AngularVelocity = Vector3.new(9e9,9e9,9e9)
 			else
 				local a = Instance.new("BodyVelocity",v)
 				a.MaxForce = Vector3.new(math.huge,math.huge,math.huge); a.P = math.huge; a.Velocity = Vector3.new(_G.Velocity,_G.Velocity,_G.Velocity)
