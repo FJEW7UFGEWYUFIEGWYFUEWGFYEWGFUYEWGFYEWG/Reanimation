@@ -22,9 +22,6 @@ if _G.ExtremeNetless == nil then _G.ExtremeNetless = false end
 
 settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
 settings().Physics.AllowSleep = false
-game.Players.LocalPlayer.MaximumSimulationRadius=1000
-sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",1000)
-
 -- // Variables
 local PhysicsService = game:GetService("PhysicsService")
 local RunService = game:GetService("RunService")
@@ -165,7 +162,18 @@ end
 for i,v in pairs(originalrig:GetDescendants()) do
 	cr(cc(function()
 		if v:IsA("BasePart") then
-			v.Velocity = Vector3.new(_G.Velocity, _G.Velocity, _G.Velocity)
+			for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+if v:IsA("BasePart") and v.Name ~= 'HumanoidRootPart' then 
+game:GetService("RunService").Heartbeat:connect(function()
+pcall(function()
+v.Velocity = Vector3.new(0,-30,0)
+game.Players.LocalPlayer.ReplicationFocus=workspace
+sethiddenproperty(game.Players.LocalPlayer,"MaximumSimulationRadius",math.huge)
+sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",999999)
+end)
+end)
+end
+end
 			if _G.Netless2 then
 				local a = Instance.new("BodyVelocity",v)
 				a.MaxForce = Vector3.new(99999,99999,99999)
@@ -285,7 +293,7 @@ if _G.AutoAnimate then
 	if rigtype == Enum.HumanoidRigType.R15 and _G.R15toR6 then
 		cr(cc(function()
 			_G.ForHonor = Character.Animate
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/Kenzen/master/Animate"))()
+			--loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/Kenzen/master/Animate"))()
 		end))
 	else
 		Character.Animate.Disabled = true; wait() Character.Animate.Disabled = false
@@ -427,3 +435,7 @@ end
 
 -- // God Mode
 if _G.GodMode and originalrig:FindFirstChild("Neck",true) then wait(game.Players.RespawnTime + 1); originalrig:FindFirstChild("Neck",true).Parent = nil keepinplace = false end
+
+if rigtype == Enum.HumanoidRigType.R15 and _G.R15toR6 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/fgewfwefewfewhiuyf7h8gewhguiyewhg/Animate/main/Source"))()
+end
