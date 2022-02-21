@@ -43,11 +43,11 @@ end
 local offsets = {
 	["Left Arm"] = {["LeftUpperArm"] = CFrame.new(0,0.39,0),
 		["LeftLowerArm"] = CFrame.new(0,-0.15,0),
-		["LeftHand"] = CFrame.new(0,-0.85,0)
+		["LeftHand"] = CFrame.new(0,-0.75,0)
 	},
 	["Right Arm"] = {["RightUpperArm"] = CFrame.new(0,0.39,0),
 		["RightLowerArm"] = CFrame.new(0,-0.15,0),
-		["RightHand"] = CFrame.new(0,-0.85,0)
+		["RightHand"] = CFrame.new(0,-0.75,0)
 	},
 	["Torso"] = {["UpperTorso"] = CFrame.new(0,0.2,0),
 		["LowerTorso"] = CFrame.new(0,-0.8,0),
